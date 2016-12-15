@@ -1,0 +1,838 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\Temp\fibiesa</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="About.aspx">
+      <publishTime>02/25/2014 22:58:46</publishTime>
+    </File>
+    <File Include="Account/ChangePassword.aspx">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="Account/ChangePasswordSuccess.aspx">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="Account/Login.aspx">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="Account/Register.aspx">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="Account/Web.config">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="ajax/libs/jquery/1.5.1/jquery.min.js">
+      <publishTime>02/25/2014 22:58:46</publishTime>
+    </File>
+    <File Include="ajax/libs/jqueryui/1.8.6/jquery-ui.min.js">
+      <publishTime>02/25/2014 22:58:46</publishTime>
+    </File>
+    <File Include="bin/AjaxControlToolkit.dll">
+      <publishTime>02/25/2014 22:58:57</publishTime>
+    </File>
+    <File Include="bin/Boleto.Net.dll">
+      <publishTime>02/25/2014 22:58:57</publishTime>
+    </File>
+    <File Include="bin/BusinessLayer.dll">
+      <publishTime>04/27/2015 21:40:34</publishTime>
+    </File>
+    <File Include="bin/DataAccess.dll">
+      <publishTime>04/27/2015 21:40:34</publishTime>
+    </File>
+    <File Include="bin/DataObjects.dll">
+      <publishTime>04/27/2015 21:40:33</publishTime>
+    </File>
+    <File Include="bin/FG.dll">
+      <publishTime>04/27/2015 21:40:33</publishTime>
+    </File>
+    <File Include="bin/FIBIESA.dll">
+      <publishTime>04/27/2015 21:42:24</publishTime>
+    </File>
+    <File Include="bin/Microsoft.ReportViewer.Common.dll">
+      <publishTime>02/20/2011 04:40:08</publishTime>
+    </File>
+    <File Include="bin/Microsoft.ReportViewer.ProcessingObjectModel.dll">
+      <publishTime>07/24/2014 17:37:30</publishTime>
+    </File>
+    <File Include="bin/Microsoft.ReportViewer.WebForms.dll">
+      <publishTime>02/20/2011 04:40:08</publishTime>
+    </File>
+    <File Include="bin/Microsoft.ReportViewer.WinForms.dll">
+      <publishTime>02/20/2011 04:40:08</publishTime>
+    </File>
+    <File Include="bin/Relatorios/rptBoleto.rdlc">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="bin/Relatorios/rptCarteirinha.rdlc">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="bin/Relatorios/rptCodigoBarras.rdlc">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="bin/Relatorios/rptContasPagar.rdlc">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="bin/Relatorios/rptContasReceber.rdlc">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="bin/Relatorios/rptCursos.rdlc">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="bin/Relatorios/rptDoacoes.rdlc">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="bin/Relatorios/rptEmprestimo.rdlc">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="bin/Relatorios/rptEmprestimoAcumulado.rdlc">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="bin/Relatorios/rptFrequencia.rdlc">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="bin/Relatorios/rptItensEstoque.rdlc">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="bin/Relatorios/rptMovimentacaoEstoque.rdlc">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="bin/Relatorios/rptReciboDoacao.rdlc">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="bin/Relatorios/rptRecibos.rdlc">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="bin/Relatorios/rptReciboVenda.rdlc">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="bin/Relatorios/rptTurmas.rdlc">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="bin/Relatorios/rptTurmasDiario.rdlc">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="bin/Relatorios/rptVendas.rdlc">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="bin/Relatorios/rptVendasAcumulado.rdlc">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="cadAcertoEstoque.aspx">
+      <publishTime>02/25/2014 22:59:01</publishTime>
+    </File>
+    <File Include="cadAgencia.aspx">
+      <publishTime>02/25/2014 22:58:46</publishTime>
+    </File>
+    <File Include="cadAutor.aspx">
+      <publishTime>02/25/2014 22:58:45</publishTime>
+    </File>
+    <File Include="cadBairro.aspx">
+      <publishTime>02/25/2014 22:58:47</publishTime>
+    </File>
+    <File Include="cadBanco.aspx">
+      <publishTime>02/25/2014 22:59:00</publishTime>
+    </File>
+    <File Include="cadBancosInstrucoes.aspx">
+      <publishTime>02/25/2014 22:58:48</publishTime>
+    </File>
+    <File Include="cadCategoria.aspx">
+      <publishTime>02/25/2014 22:59:06</publishTime>
+    </File>
+    <File Include="cadChamada.aspx">
+      <publishTime>02/25/2014 22:59:03</publishTime>
+    </File>
+    <File Include="cadCidade.aspx">
+      <publishTime>02/25/2014 22:58:44</publishTime>
+    </File>
+    <File Include="cadCirculacaoLivros.aspx">
+      <publishTime>02/25/2014 22:58:46</publishTime>
+    </File>
+    <File Include="cadConta.aspx">
+      <publishTime>02/25/2014 22:58:45</publishTime>
+    </File>
+    <File Include="cadContasApagar.aspx">
+      <publishTime>02/25/2014 22:58:58</publishTime>
+    </File>
+    <File Include="cadContasReceber.aspx">
+      <publishTime>02/25/2014 22:59:00</publishTime>
+    </File>
+    <File Include="cadDoacao.aspx">
+      <publishTime>02/25/2014 22:59:00</publishTime>
+    </File>
+    <File Include="cadEditora.aspx">
+      <publishTime>02/25/2014 22:58:44</publishTime>
+    </File>
+    <File Include="cadEstado.aspx">
+      <publishTime>02/25/2014 22:58:45</publishTime>
+    </File>
+    <File Include="cadEvento.aspx">
+      <publishTime>02/25/2014 22:58:44</publishTime>
+    </File>
+    <File Include="cadExemplar.aspx">
+      <publishTime>02/25/2014 22:58:45</publishTime>
+    </File>
+    <File Include="cadFormulario.aspx">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="cadInstituicao.aspx">
+      <publishTime>02/25/2014 22:59:05</publishTime>
+    </File>
+    <File Include="cadItemEstoque.aspx">
+      <publishTime>02/25/2014 22:59:08</publishTime>
+    </File>
+    <File Include="cadJuroMulta.aspx">
+      <publishTime>02/25/2014 22:58:47</publishTime>
+    </File>
+    <File Include="cadManVenda.aspx">
+      <publishTime>02/25/2014 22:58:44</publishTime>
+    </File>
+    <File Include="cadMovimentoEstoque.aspx">
+      <publishTime>02/25/2014 22:59:01</publishTime>
+    </File>
+    <File Include="cadNotaEntrada.aspx">
+      <publishTime>02/25/2014 22:58:45</publishTime>
+    </File>
+    <File Include="cadObra.aspx">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="cadOrigem.aspx">
+      <publishTime>02/25/2014 22:59:03</publishTime>
+    </File>
+    <File Include="cadParametro.aspx">
+      <publishTime>02/25/2014 22:59:01</publishTime>
+    </File>
+    <File Include="cadPermissao.aspx">
+      <publishTime>02/25/2014 22:58:44</publishTime>
+    </File>
+    <File Include="cadPessoa.aspx">
+      <publishTime>04/27/2015 21:38:48</publishTime>
+    </File>
+    <File Include="cadPortador.aspx">
+      <publishTime>02/25/2014 22:59:00</publishTime>
+    </File>
+    <File Include="cadTipoAutor.aspx">
+      <publishTime>02/25/2014 22:58:46</publishTime>
+    </File>
+    <File Include="cadTipoDocumento.aspx">
+      <publishTime>02/25/2014 22:59:06</publishTime>
+    </File>
+    <File Include="cadTipoObra.aspx">
+      <publishTime>02/25/2014 22:58:45</publishTime>
+    </File>
+    <File Include="cadTitulo.aspx">
+      <publishTime>02/25/2014 22:59:03</publishTime>
+    </File>
+    <File Include="cadTurma.aspx">
+      <publishTime>02/25/2014 22:59:06</publishTime>
+    </File>
+    <File Include="cadTurmaParticipantes.aspx">
+      <publishTime>04/27/2015 21:38:48</publishTime>
+    </File>
+    <File Include="cadUsuario.aspx">
+      <publishTime>02/25/2014 22:58:44</publishTime>
+    </File>
+    <File Include="cadVenda.aspx">
+      <publishTime>02/25/2014 22:59:05</publishTime>
+    </File>
+    <File Include="default.aspx">
+      <publishTime>02/25/2014 22:58:45</publishTime>
+    </File>
+    <File Include="emissaoBloqBan.aspx">
+      <publishTime>02/25/2014 22:58:45</publishTime>
+    </File>
+    <File Include="erroPermissao.aspx">
+      <publishTime>02/25/2014 22:58:46</publishTime>
+    </File>
+    <File Include="GerarRemessa.aspx">
+      <publishTime>02/25/2014 22:58:45</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>02/25/2014 22:59:05</publishTime>
+    </File>
+    <File Include="home.Master">
+      <publishTime>04/27/2015 21:38:48</publishTime>
+    </File>
+    <File Include="images/bg_breadcrumb.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/bg_btns.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/bg_btns_alt.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/bg_cont_head.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/bg_fade_blue_med.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/bg_fade_green_med.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/bg_fade_red_med.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/bg_fade_sml.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/bg_fade_sml_reverse.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/bg_fade_yellow_med.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/bg_gallerybox.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/bg_header.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/bg_input_correct.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/bg_input_error.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/bg_input_normal.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/bg_loginbox.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/bg_login_btn.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/bg_nav_link.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/bg_toolbox_tab.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/blank.gif">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/box.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/fancybox-x.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/fancybox-y.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/fancybox/books.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/fancybox/fancybox.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/icons/icone_lupa.jpg">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/icons/icon_approve.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/icons/icon_arrow.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/icons/icon_close_sq.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/icons/icon_cog.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/icons/icon_cross.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/icons/icon_delete.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/icons/icon_edit.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/icons/icon_error.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/icons/icon_home.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/icons/icon_info.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/icons/icon_locked.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/icons/icon_lrg_calendar.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/icons/icon_lrg_comment.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/icons/icon_lrg_create.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/icons/icon_lrg_media.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/icons/icon_lrg_support.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/icons/icon_lrg_user.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/icons/icon_mail.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/icons/icon_printer.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/icons/icon_success.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/icons/icon_tick.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/icons/icon_tick_sq.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/icons/icon_unapprove.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/icons/icon_unlock.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/icons/icon_username.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/icons/icon_warning.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/icon_breadcrumb.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/icon_expand_grey.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/jquery.wysiwyg.gif">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/loading.gif">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/logo2.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/logoff.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/logoFibiese.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/logo_emp.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/money2.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/nav_current.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/nav_hover.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/nav_sub.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/nav_sub_active.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/paste.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/search_btn.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/status_high.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/status_low.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/status_med.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/toolbox_alt_row.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/toolbox_row.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/users1.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="images/Índice.png">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="index.Master">
+      <publishTime>02/25/2014 22:58:58</publishTime>
+    </File>
+    <File Include="instituicoesLogo.ashx">
+      <publishTime>02/25/2014 22:58:44</publishTime>
+    </File>
+    <File Include="login.aspx">
+      <publishTime>02/25/2014 22:58:45</publishTime>
+    </File>
+    <File Include="ops.aspx">
+      <publishTime>02/25/2014 22:58:45</publishTime>
+    </File>
+    <File Include="Pesquisar.aspx">
+      <publishTime>02/25/2014 22:59:08</publishTime>
+    </File>
+    <File Include="PesquisarItens.aspx">
+      <publishTime>02/25/2014 22:58:58</publishTime>
+    </File>
+    <File Include="recuperacaoLogin.aspx">
+      <publishTime>02/25/2014 22:58:44</publishTime>
+    </File>
+    <File Include="Relatorios/RelBoletos.aspx">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="Relatorios/RelCarteirinha.aspx">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="Relatorios/RelCodigoBarras.aspx">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="Relatorios/RelContasPagar.aspx">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="Relatorios/RelContasReceber.aspx">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="Relatorios/RelCursos.aspx">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="Relatorios/RelDoacoes.aspx">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="Relatorios/RelEmprestimoAcumulado.aspx">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="Relatorios/RelEmprestimos.aspx">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="Relatorios/RelEmprestimosMaisMenos.aspx">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="Relatorios/RelFrequencia.aspx">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="Relatorios/RelItensEstoque.aspx">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="Relatorios/RelMovimentacaoEstoque.aspx">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="Relatorios/RelReciboDoacao.aspx">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="Relatorios/RelRecibos.aspx">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="Relatorios/RelReciboVenda.aspx">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="Relatorios/RelTurmas.aspx">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="Relatorios/RelTurmasDiario.aspx">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="Relatorios/RelVendas.aspx">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="Relatorios/RelVendasAcumulados.aspx">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="Relatorios/rptBoleto.rdlc">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="Relatorios/rptCarteirinha.rdlc">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="Relatorios/rptCodigoBarras.rdlc">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="Relatorios/rptContasPagar.rdlc">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="Relatorios/rptContasReceber.rdlc">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="Relatorios/rptCursos.rdlc">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="Relatorios/rptDoacoes.rdlc">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="Relatorios/rptEmprestimo.rdlc">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="Relatorios/rptEmprestimoAcumulado.rdlc">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="Relatorios/rptFrequencia.rdlc">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="Relatorios/rptItensEstoque.rdlc">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="Relatorios/rptMovimentacaoEstoque.rdlc">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="Relatorios/rptReciboDoacao.rdlc">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="Relatorios/rptRecibos.rdlc">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="Relatorios/rptReciboVenda.rdlc">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="Relatorios/rptTurmas.rdlc">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="Relatorios/rptTurmasDiario.rdlc">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="Relatorios/rptVendas.rdlc">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="Relatorios/rptVendasAcumulado.rdlc">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="Scripts/default.js">
+      <publishTime>02/25/2014 22:59:08</publishTime>
+    </File>
+    <File Include="Scripts/fullcalendar.min.js">
+      <publishTime>02/25/2014 22:59:08</publishTime>
+    </File>
+    <File Include="Scripts/functions.js">
+      <publishTime>02/25/2014 22:59:08</publishTime>
+    </File>
+    <File Include="Scripts/jnmodal.js">
+      <publishTime>02/25/2014 22:59:08</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.4.1-vsdoc.js">
+      <publishTime>02/25/2014 22:59:08</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.4.1.js">
+      <publishTime>02/25/2014 22:59:08</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.4.1.min.js">
+      <publishTime>02/25/2014 22:59:08</publishTime>
+    </File>
+    <File Include="Scripts/jquery.fancybox-1.3.4.pack.js">
+      <publishTime>02/25/2014 22:59:08</publishTime>
+    </File>
+    <File Include="Scripts/jquery.price_format.1.7.js">
+      <publishTime>02/25/2014 22:59:08</publishTime>
+    </File>
+    <File Include="Scripts/jquery.wysiwyg.js">
+      <publishTime>02/25/2014 22:59:08</publishTime>
+    </File>
+    <File Include="Scripts/visualize.jQuery.js">
+      <publishTime>02/25/2014 22:59:08</publishTime>
+    </File>
+    <File Include="Styles/jnmodal.css">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="Styles/jquery.fancybox-1.3.4.css">
+      <publishTime>04/27/2015 21:38:49</publishTime>
+    </File>
+    <File Include="Styles/login.css">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="Styles/main.css">
+      <publishTime>04/27/2015 21:38:49</publishTime>
+    </File>
+    <File Include="Styles/Site.css">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="Styles/style.css">
+      <publishTime>04/27/2015 21:38:49</publishTime>
+    </File>
+    <File Include="Styles/wysiwyg.css">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="svn/trunk/charting/js/excanvas.js">
+      <publishTime>02/25/2014 22:58:48</publishTime>
+    </File>
+    <File Include="svn/trunk/_shared/EnhanceJS/enhance.js">
+      <publishTime>02/25/2014 22:58:48</publishTime>
+    </File>
+    <File Include="themes/blue/images/bg_btns.png">
+      <publishTime>02/25/2014 22:58:47</publishTime>
+    </File>
+    <File Include="themes/blue/images/bg_navigation_links.png">
+      <publishTime>02/25/2014 22:58:47</publishTime>
+    </File>
+    <File Include="themes/blue/images/bg_toolbox_tab.png">
+      <publishTime>02/25/2014 22:58:47</publishTime>
+    </File>
+    <File Include="themes/blue/images/toolbox_alt_row.png">
+      <publishTime>02/25/2014 22:58:47</publishTime>
+    </File>
+    <File Include="themes/blue/styles.css">
+      <publishTime>02/25/2014 22:58:47</publishTime>
+    </File>
+    <File Include="viewAgencia.aspx">
+      <publishTime>02/25/2014 22:59:06</publishTime>
+    </File>
+    <File Include="viewAutor.aspx">
+      <publishTime>02/25/2014 22:58:48</publishTime>
+    </File>
+    <File Include="viewBairro.aspx">
+      <publishTime>04/27/2015 21:38:49</publishTime>
+    </File>
+    <File Include="viewBanco.aspx">
+      <publishTime>02/25/2014 22:59:05</publishTime>
+    </File>
+    <File Include="viewBancosInstrucoes.aspx">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="viewCategoria.aspx">
+      <publishTime>02/25/2014 22:59:07</publishTime>
+    </File>
+    <File Include="viewCidade.aspx">
+      <publishTime>02/25/2014 22:59:00</publishTime>
+    </File>
+    <File Include="viewConta.aspx">
+      <publishTime>02/25/2014 22:58:58</publishTime>
+    </File>
+    <File Include="viewContasApagar.aspx">
+      <publishTime>02/25/2014 22:58:44</publishTime>
+    </File>
+    <File Include="viewContasReceber.aspx">
+      <publishTime>02/25/2014 22:58:47</publishTime>
+    </File>
+    <File Include="viewDoacao.aspx">
+      <publishTime>02/25/2014 22:59:09</publishTime>
+    </File>
+    <File Include="viewEditora.aspx">
+      <publishTime>02/25/2014 22:59:03</publishTime>
+    </File>
+    <File Include="viewEstado.aspx">
+      <publishTime>02/25/2014 22:59:01</publishTime>
+    </File>
+    <File Include="viewEvento.aspx">
+      <publishTime>02/25/2014 22:59:00</publishTime>
+    </File>
+    <File Include="viewExemplar.aspx">
+      <publishTime>02/25/2014 22:59:07</publishTime>
+    </File>
+    <File Include="viewFormulario.aspx">
+      <publishTime>02/25/2014 22:58:44</publishTime>
+    </File>
+    <File Include="viewInstituicao.aspx">
+      <publishTime>02/25/2014 22:58:46</publishTime>
+    </File>
+    <File Include="viewJuroMulta.aspx">
+      <publishTime>02/25/2014 22:58:47</publishTime>
+    </File>
+    <File Include="viewManVenda.aspx">
+      <publishTime>02/25/2014 22:59:06</publishTime>
+    </File>
+    <File Include="viewNotaEntrada.aspx">
+      <publishTime>02/25/2014 22:59:00</publishTime>
+    </File>
+    <File Include="viewObra.aspx">
+      <publishTime>02/25/2014 22:59:05</publishTime>
+    </File>
+    <File Include="viewOrigem.aspx">
+      <publishTime>02/25/2014 22:58:45</publishTime>
+    </File>
+    <File Include="viewPermissao.aspx">
+      <publishTime>02/25/2014 22:58:45</publishTime>
+    </File>
+    <File Include="viewPessoa.aspx">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="viewPortador.aspx">
+      <publishTime>02/25/2014 22:58:47</publishTime>
+    </File>
+    <File Include="viewRelCodigoBarras.aspx">
+      <publishTime>02/25/2014 22:58:46</publishTime>
+    </File>
+    <File Include="viewRelContasPagar.aspx">
+      <publishTime>02/25/2014 22:58:46</publishTime>
+    </File>
+    <File Include="viewRelContasReceber.aspx">
+      <publishTime>02/25/2014 22:59:06</publishTime>
+    </File>
+    <File Include="viewRelCursos.aspx">
+      <publishTime>02/25/2014 22:58:44</publishTime>
+    </File>
+    <File Include="viewRelDoacoes.aspx">
+      <publishTime>02/25/2014 22:58:44</publishTime>
+    </File>
+    <File Include="viewRelEmprestimo.aspx">
+      <publishTime>02/25/2014 22:58:58</publishTime>
+    </File>
+    <File Include="viewRelFrequencia.aspx">
+      <publishTime>02/25/2014 22:58:44</publishTime>
+    </File>
+    <File Include="viewRelItensEstoque.aspx">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="viewRelMovimentacaoEstoque.aspx">
+      <publishTime>02/25/2014 22:58:58</publishTime>
+    </File>
+    <File Include="viewRelTurmas.aspx">
+      <publishTime>02/25/2014 22:59:05</publishTime>
+    </File>
+    <File Include="viewRelTurmasDiario.aspx">
+      <publishTime>02/25/2014 22:59:04</publishTime>
+    </File>
+    <File Include="viewRelVendas.aspx">
+      <publishTime>02/25/2014 22:58:44</publishTime>
+    </File>
+    <File Include="viewReserva.aspx">
+      <publishTime>02/25/2014 22:58:46</publishTime>
+    </File>
+    <File Include="viewTipoAutor.aspx">
+      <publishTime>02/25/2014 22:58:47</publishTime>
+    </File>
+    <File Include="viewTipoDocumento.aspx">
+      <publishTime>02/25/2014 22:59:02</publishTime>
+    </File>
+    <File Include="viewTipoObra.aspx">
+      <publishTime>02/25/2014 22:58:44</publishTime>
+    </File>
+    <File Include="viewTitulo.aspx">
+      <publishTime>02/25/2014 22:58:45</publishTime>
+    </File>
+    <File Include="viewTurma.aspx">
+      <publishTime>02/25/2014 22:58:45</publishTime>
+    </File>
+    <File Include="viewUsuario.aspx">
+      <publishTime>02/25/2014 22:59:03</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>04/27/2015 21:40:39</publishTime>
+    </File>
+    <File Include="Web.sitemap">
+      <publishTime>02/25/2014 22:59:09</publishTime>
+    </File>
+    <File Include="WebForm1.aspx">
+      <publishTime>02/25/2014 22:58:47</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,340 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<base versaoBase="1">
+  
+  <tabela nome="agencias">
+    <coluna nome="id" tipo="UNIQUEIDENTIFIER" tamanho="" descricao="" valorPadrao="" chavePrimaria="True" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="codigo" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="descricao" tipo="VARCHAR" tamanho="70" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="cep" tipo="VARCHAR" tamanho="20" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="bairroid" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="True" tabelaChaveEstrangeira="bairros" campoChaveEstrangeira="id" />
+    <coluna nome="endereco" tipo="VARCHAR" tamanho="70" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="complemento" tipo="VARCHAR" tamanho="40" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="cidadeid" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="True" tabelaChaveEstrangeira="cidades" campoChaveEstrangeira="id" />
+    <coluna nome="ranking" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="bancoid" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="True" tabelaChaveEstrangeira="bancos" campoChaveEstrangeira="id" />
+  </tabela>
+    
+  <tabela nome="bairros">
+    <coluna nome="id" tipo="UNIQUEIDENTIFIER" tamanho="" descricao="" valorPadrao="" chavePrimaria="True" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="codigo" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="descricao" tipo="VARCHAR" tamanho="40" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="cidadeid" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="True" tabelaChaveEstrangeira="cidades" campoChaveEstrangeira="id" />
+  </tabela>
+
+  <tabela nome="categorias">
+    <coluna nome="id" tipo="UNIQUEIDENTIFIER" tamanho="" descricao="" valorPadrao="" chavePrimaria="True" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="codigo" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="descricao" tipo="VARCHAR" tamanho="70" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+  </tabela>
+  
+  <tabela nome="chamadas">
+    <coluna nome="id" tipo="UNIQUEIDENTIFIER" tamanho="" descricao="" valorPadrao="" chavePrimaria="True" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="turmaParticipanteId" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="True" tabelaChaveEstrangeira="turmasParticipantes" campoChaveEstrangeira="id" />
+    <coluna nome="presenca" tipo="BOOLEAN" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="data" tipo="DATETIME" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+  </tabela>
+  
+  <tabela nome="cidades">
+    <coluna nome="id" tipo="UNIQUEIDENTIFIER" tamanho="" descricao="" valorPadrao="" chavePrimaria="True" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="codigo" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="descricao" tipo="VARCHAR" tamanho="70" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="uf" tipo="VARCHAR" tamanho="2" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+  </tabela>
+  
+  <tabela nome="doacoes">
+    <coluna nome="id" tipo="UNIQUEIDENTIFIER" tamanho="" descricao="" valorPadrao="" chavePrimaria="True" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="pessoaId" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="True" tabelaChaveEstrangeira="pessoas" campoChaveEstrangeira="id" />
+    <coluna nome="data" tipo="DATETIME" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="valor" tipo="DECIMAL" tamanho="9" precisao="2" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="usuarioId" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="True" tabelaChaveEstrangeira="usuarios" campoChaveEstrangeira="id" />
+  </tabela>
+  
+  <tabela nome="emprestimoMov">
+    <coluna nome="id" tipo="UNIQUEIDENTIFIER" tamanho="" descricao="" valorPadrao="" chavePrimaria="True" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="emprestimoId" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="True" tabelaChaveEstrangeira="emprestimos" campoChaveEstrangeira="id" />
+    <coluna nome="dataEmprestimo" tipo="DATE" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="dataDevolucao" tipo="DATE" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="dataPrevistaEmprestimo" tipo="DATE" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+  </tabela>
+  
+  <tabela nome="emprestimos">
+    <coluna nome="id" tipo="UNIQUEIDENTIFIER" tamanho="" descricao="" valorPadrao="" chavePrimaria="True" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="exemplarId" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="True" tabelaChaveEstrangeira="exemplares" campoChaveEstrangeira="id" />
+    <coluna nome="pessoaid" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="True" tabelaChaveEstrangeira="pessoas" campoChaveEstrangeira="id" />    
+  </tabela>
+  
+  <tabela nome="eventos">
+    <coluna nome="id" tipo="UNIQUEIDENTIFIER" tamanho="" descricao="" valorPadrao="" chavePrimaria="True" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="codigo" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="descricao" tipo="VARCHAR" tamanho="70" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />    
+    <coluna nome="dtInicio" tipo="DATE" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />    
+    <coluna nome="dtFim" tipo="DATE" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />    
+  </tabela>
+
+  <tabela nome="exemplares">
+    <coluna nome="id" tipo="UNIQUEIDENTIFIER" tamanho="" descricao="" valorPadrao="" chavePrimaria="True" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="obraid" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="True" tabelaChaveEstrangeira="Obras" campoChaveEstrangeira="id" />
+    <coluna nome="tombo" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="status" tipo="VARCHAR" tamanho="1" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="origemid" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="True" tabelaChaveEstrangeira="origens" campoChaveEstrangeira="id" />
+    <coluna nome="obs" tipo="VARCHAR" tamanho="500" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+  </tabela>
+
+  <tabela nome="formularios">
+    <coluna nome="id" tipo="UNIQUEIDENTIFIER" tamanho="" descricao="" valorPadrao="" chavePrimaria="True" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="codigo" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="descricao" tipo="VARCHAR" tamanho="70" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="nome" tipo="VARCHAR" tamanho="70" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="tipo" tipo="VARCHAR" tamanho="2" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="modulo" tipo="VARCHAR" tamanho="1" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+  </tabela>
+
+  <tabela nome="imagensCapa">
+    <coluna nome="id" tipo="UNIQUEIDENTIFIER" tamanho="" descricao="" valorPadrao="" chavePrimaria="True" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="obraid" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="True" tabelaChaveEstrangeira="Obras" campoChaveEstrangeira="id" />
+    <coluna nome="imagem" tipo="IMAGE" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+  </tabela>
+
+  <tabela nome="instituicoes">
+    <coluna nome="id" tipo="UNIQUEIDENTIFIER" tamanho="" descricao="" valorPadrao="" chavePrimaria="True" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="codigo" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="razao" tipo="VARCHAR" tamanho="70" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="email" tipo="VARCHAR" tamanho="100" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="cnpj" tipo="VARCHAR" tamanho="14" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="cidadeid" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="True" tabelaChaveEstrangeira="cidades" campoChaveEstrangeira="id" />
+    <coluna nome="cep" tipo="VARCHAR" tamanho="10" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="bairroid" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="True" tabelaChaveEstrangeira="bairros" campoChaveEstrangeira="id" />
+    <coluna nome="endereco" tipo="VARCHAR" tamanho="70" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="numero" tipo="VARCHAR" tamanho="20" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="complemento" tipo="VARCHAR" tamanho="40" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="nomeFantasia" tipo="VARCHAR" tamanho="70" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="telefone" tipo="VARCHAR" tamanho="20" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="ranking" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="servidorSMTP" tipo="VARCHAR" tamanho="100" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="login" tipo="VARCHAR" tamanho="100" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="senha" tipo="VARCHAR" tamanho="100" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="porta" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+  </tabela>
+
+  <tabela nome="instituicoeslogo">
+    <coluna nome="id" tipo="UNIQUEIDENTIFIER" tamanho="" descricao="" valorPadrao="" chavePrimaria="True" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="instituicoesid" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="True" tabelaChaveEstrangeira="instituicoes" campoChaveEstrangeira="id" />
+    <coluna nome="imagem" tipo="IMAGE" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="extensao" tipo="VARCHAR" tamanho="10" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+  </tabela>
+
+  <tabela nome="itensestoque">
+    <coluna nome="id" tipo="UNIQUEIDENTIFIER" tamanho="" descricao="" valorPadrao="" chavePrimaria="True" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="status" tipo="BOOLEAN" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="controlaestoque" tipo="BOOLEAN" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="qtdminima" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="obraid" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="True" tabelaChaveEstrangeira="Obras" campoChaveEstrangeira="id" />
+    <coluna nome="vlrcusto" tipo="DECIMAL" tamanho="9" precisao="2" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="vlrvenda" tipo="DECIMAL" tamanho="9" precisao="2" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="data" tipo="DATE" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+  </tabela>
+
+  <tabela nome="movimentosestoque">
+    <coluna nome="id" tipo="UNIQUEIDENTIFIER" tamanho="" descricao="" valorPadrao="" chavePrimaria="True" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="vendaitensid" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="True" tabelaChaveEstrangeira="vendaitens" campoChaveEstrangeira="id" />
+    <coluna nome="usuariodid" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="itemestoqueid" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="True" tabelaChaveEstrangeira="itensestoque" campoChaveEstrangeira="id" />
+    <coluna nome="quantidade" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="notaentradaitensid" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="True" tabelaChaveEstrangeira="notaentradaitens" campoChaveEstrangeira="id" />
+    <coluna nome="tipo" tipo="VARCHAR" tamanho="1" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="data" tipo="DATE" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+  </tabela>
+
+  <tabela nome="notaentrada">
+    <coluna nome="id" tipo="UNIQUEIDENTIFIER" tamanho="" descricao="" valorPadrao="" chavePrimaria="True" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="numero" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="serie" tipo="SMALLINT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="data" tipo="DATE" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+  </tabela>
+
+  <tabela nome="notaentradaitens">
+    <coluna nome="id" tipo="UNIQUEIDENTIFIER" tamanho="" descricao="" valorPadrao="" chavePrimaria="True" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="notaentradaid" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="True" tabelaChaveEstrangeira="notaentrada" campoChaveEstrangeira="id" />
+    <coluna nome="valor" tipo="DECIMAL" tamanho="9" precisao="2" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="quantidade" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="descricaoitem" tipo="VARCHAR" tamanho="100" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="itemestoqueid" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="True" tabelaChaveEstrangeira="itensestoque" campoChaveEstrangeira="id" />
+    <coluna nome="usuarioid" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="True" tabelaChaveEstrangeira="usuarios" campoChaveEstrangeira="id" />
+  </tabela>
+
+  <tabela nome="obras">
+    <coluna nome="id" tipo="UNIQUEIDENTIFIER" tamanho="" descricao="" valorPadrao="" chavePrimaria="True" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="codigo" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="titulo" tipo="VARCHAR" tamanho="100" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="nroedicao" tipo="SMALLINT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="editora" tipo="VARCHAR" tamanho="40" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="localpublicacao" tipo="VARCHAR" tamanho="100" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="nropaginas" tipo="SMALLINT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="isbn" tipo="VARCHAR" tamanho="20" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="assuntosaborda" tipo="VARCHAR" tamanho="4000" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="datareimpressao" tipo="DATE" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="volume" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="tiposobraid" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="True" tabelaChaveEstrangeira="tiposobras" campoChaveEstrangeira="id" />
+    <coluna nome="cdu" tipo="VARCHAR" tamanho="40" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="anopublicacao" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="autores" tipo="VARCHAR" tamanho="500" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+  </tabela>
+
+  <tabela nome="obrasautores">
+    <coluna nome="id" tipo="UNIQUEIDENTIFIER" tamanho="" descricao="" valorPadrao="" chavePrimaria="True" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="obraid" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="True" tabelaChaveEstrangeira="obras" campoChaveEstrangeira="id" />
+    <coluna nome="autoresid" tipo="VARCHAR" tamanho="70" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="True" tabelaChaveEstrangeira="autores" campoChaveEstrangeira="id" />   
+  </tabela>
+
+  <tabela nome="origens">
+    <coluna nome="id" tipo="UNIQUEIDENTIFIER" tamanho="" descricao="" valorPadrao="" chavePrimaria="True" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="codigo" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="descricao" tipo="VARCHAR" tamanho="70" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+  </tabela>
+
+  <tabela nome="parametros">
+    <coluna nome="id" tipo="UNIQUEIDENTIFIER" tamanho="" descricao="" valorPadrao="" chavePrimaria="True" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="descricao" tipo="VARCHAR" tamanho="200" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="valor" tipo="VARCHAR" tamanho="70" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="codigo" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+  </tabela>
+
+  <tabela nome="permissoes">
+    <coluna nome="id" tipo="UNIQUEIDENTIFIER" tamanho="" descricao="" valorPadrao="" chavePrimaria="True" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="consultar" tipo="BOOLEAN" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="editar" tipo="BOOLEAN" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="inserir" tipo="BOOLEAN" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="excluir" tipo="BOOLEAN" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="formularioid" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="True" tabelaChaveEstrangeira="formularios" campoChaveEstrangeira="id" />
+    <coluna nome="categoriaid" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="True" tabelaChaveEstrangeira="categorias" campoChaveEstrangeira="id" />
+  </tabela>
+
+  <tabela nome="pessoas">
+    <coluna nome="id" tipo="UNIQUEIDENTIFIER" tamanho="" descricao="" valorPadrao="" chavePrimaria="True" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="nome" tipo="VARCHAR" tamanho="" precisao="70" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="nomefantasia" tipo="VARCHAR" tamanho="70" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="cpfcnpj" tipo="VARCHAR" tamanho="14" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="rg" tipo="VARCHAR" tamanho="14" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="dtnascimento" tipo="DATE" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="estadocivil" tipo="VARCHAR" tamanho="40" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="endereco" tipo="VARCHAR" tamanho="70" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="numero" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="bairroid" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="True" tabelaChaveEstrangeira="bairros" campoChaveEstrangeira="id" />
+    <coluna nome="cep" tipo="VARCHAR" tamanho="10" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="cidadeid" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="True" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="email" tipo="VARCHAR" tamanho="100" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="status" tipo="BOOLEAN" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="tipo" tipo="VARCHAR" tamanho="1" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="obs" tipo="VARCHAR" tamanho="500" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="categoriaid" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="True" tabelaChaveEstrangeira="categorias" campoChaveEstrangeira="id" />
+    <coluna nome="envemail" tipo="BOOLEAN" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="dtcadastro" tipo="DATE" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="telefone" tipo="VARCHAR" tamanho="20" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="celular" tipo="VARCHAR" tamanho="20" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="blreceberemail" tipo="BOOLEAN" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="codigo" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="sexo" tipo="VARCHAR" tamanho="1" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="tipoassociado" tipo="VARCHAR" tamanho="1" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="complemento" tipo="VARCHAR" tamanho="40" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+  </tabela>
+
+  <tabela nome="renovacoes">
+    <coluna nome="id" tipo="UNIQUEIDENTIFIER" tamanho="" descricao="" valorPadrao="" chavePrimaria="True" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="emprestimoid" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="True" tabelaChaveEstrangeira="emprestimos" campoChaveEstrangeira="id" />
+    <coluna nome="dataemprestimo" tipo="DATE" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="datadevolucao" tipo="DATE" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="dataprevistaemprestimo" tipo="DATE" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+  </tabela>
+
+  <tabela nome="reservas">
+    <coluna nome="id" tipo="UNIQUEIDENTIFIER" tamanho="" descricao="" valorPadrao="" chavePrimaria="True" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="pessoaid" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="True" tabelaChaveEstrangeira="pessoas" campoChaveEstrangeira="id" />
+    <coluna nome="exemplarid" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="True" tabelaChaveEstrangeira="exemplares" campoChaveEstrangeira="id" />
+    <coluna nome="datainicio" tipo="DATE" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="datafim" tipo="DATE" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+  </tabela>
+
+  <tabela nome="tiposdeautores">
+    <coluna nome="id" tipo="UNIQUEIDENTIFIER" tamanho="" descricao="" valorPadrao="" chavePrimaria="True" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="codigo" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="descricao" tipo="VARCHAR" tamanho="40" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+  </tabela>
+
+  <tabela nome="tiposdocumentos">
+    <coluna nome="id" tipo="UNIQUEIDENTIFIER" tamanho="" descricao="" valorPadrao="" chavePrimaria="True" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="codigo" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="descricao" tipo="VARCHAR" tamanho="40" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="aplicacao" tipo="VARCHAR" tamanho="3" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+  </tabela>
+
+  <tabela nome="tiposobras">
+    <coluna nome="id" tipo="UNIQUEIDENTIFIER" tamanho="" descricao="" valorPadrao="" chavePrimaria="True" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="codigo" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="descricao" tipo="VARCHAR" tamanho="40" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="qtddias" tipo="SMALLINT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+  </tabela>
+
+  <tabela nome="turmas">
+    <coluna nome="id" tipo="UNIQUEIDENTIFIER" tamanho="" descricao="" valorPadrao="" chavePrimaria="True" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="codigo" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="descricao" tipo="VARCHAR" tamanho="70" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="eventoid" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="True" tabelaChaveEstrangeira="eventos" campoChaveEstrangeira="id" />
+    <coluna nome="dtini" tipo="DATE" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="dtfim" tipo="DATE" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="nromax" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="pessoaid" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="True" tabelaChaveEstrangeira="pessoas" campoChaveEstrangeira="id" />
+    <coluna nome="sala" tipo="VARCHAR" tamanho="20" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="horaini" tipo="TIME" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="horafim" tipo="TIME" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="diasemana" tipo="VARCHAR" tamanho="70" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+  </tabela>
+
+  <tabela nome="turmasdiario">
+    <coluna nome="id" tipo="UNIQUEIDENTIFIER" tamanho="" descricao="" valorPadrao="" chavePrimaria="True" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="data" tipo="DATE" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="obs" tipo="VARCHAR" tamanho="500" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="turmaid" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="True" tabelaChaveEstrangeira="turmas" campoChaveEstrangeira="id" />
+  </tabela>
+
+  <tabela nome="turmasparticipantes">
+    <coluna nome="id" tipo="UNIQUEIDENTIFIER" tamanho="" descricao="" valorPadrao="" chavePrimaria="True" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="turmasid" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="True" tabelaChaveEstrangeira="turmas" campoChaveEstrangeira="id" />
+    <coluna nome="pessoaid" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="True" tabelaChaveEstrangeira="pessoas" campoChaveEstrangeira="id" />
+  </tabela>
+  
+  <tabela nome="usuarios">
+    <coluna nome="id" tipo="UNIQUEIDENTIFIER" tamanho="" descricao="" valorPadrao="" chavePrimaria="True" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="login" tipo="VARCHAR" tamanho="20" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="senha" tipo="VARCHAR" tamanho="500" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="nome" tipo="VARCHAR" tamanho="70" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="status" tipo="VARCHAR" tamanho="1" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="tipo" tipo="VARCHAR" tamanho="1" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="email" tipo="VARCHAR" tamanho="100" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="nrtentlogin" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="dhtentlogin" tipo="DATE" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="codigo" tipo="int" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="categoriaid" tipo="int" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="True" tabelaChaveEstrangeira="categorias" campoChaveEstrangeira="id" />
+  </tabela>
+
+ <tabela nome="vendas">
+    <coluna nome="id" tipo="UNIQUEIDENTIFIER" tamanho="" descricao="" valorPadrao="" chavePrimaria="True" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="numero" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="pessoaid" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="True" tabelaChaveEstrangeira="pessoas" campoChaveEstrangeira="id" />
+    <coluna nome="usuarioid" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="True" tabelaChaveEstrangeira="usuarios" campoChaveEstrangeira="id" />
+    <coluna nome="data" tipo="DATE" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="situacao" tipo="VARCHAR" tamanho="1" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+  </tabela>
+
+ <tabela nome="vendaitens">
+    <coluna nome="id" tipo="UNIQUEIDENTIFIER" tamanho="" descricao="" valorPadrao="" chavePrimaria="True" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="vendaid" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="True" tabelaChaveEstrangeira="vendas" campoChaveEstrangeira="id" />
+    <coluna nome="quantidade" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="valor" tipo="DECIMAL" tamanho="9" precisao="2" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="desconto" tipo="DECIMAL" tamanho="9" precisao="2" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="situacao" tipo="VARCHAR" tamanho="1" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="False" tabelaChaveEstrangeira="" campoChaveEstrangeira="" />
+    <coluna nome="itemestoqueid" tipo="INT" tamanho="" precisao="" descricao="" valorPadrao="" chavePrimaria="False" permiteNull="False" chaveEstrangeira="True" tabelaChaveEstrangeira="itensestoque" campoChaveEstrangeira="id" />
+  </tabela>
+
+
+
+</base>

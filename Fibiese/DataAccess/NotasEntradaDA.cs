@@ -1,0 +1,191 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using DataObjects;
+using System.Data;
+using System.Data.SqlClient;
+using InfrastructureSqlServer.Helpers;
+using System.Configuration;
+using FG;
+
+
+namespace DataAccess
+{
+    public class NotasEntradaDA
+    {
+        Utils utils = new Utils();
+
+        #region funcoes
+        private List<NotasEntrada> CarregarObjNotaEntrada(SqlDataReader dr)
+        {
+            List<NotasEntrada> NotasEntrada = new List<NotasEntrada>();
+
+            while (dr.Read())
+            {
+                NotasEntrada ntE = new NotasEntrada();
+                ntE.Id = int.Parse(dr["ID"].ToString());
+                ntE.Numero = int.Parse(dr["NUMERO"].ToString());
+                ntE.Serie = short.Parse(dr["SERIE"].ToString());
+                ntE.Data = Convert.ToDateTime(dr["DATA"].ToString());
+
+                NotasEntrada.Add(ntE);
+            }
+
+            return NotasEntrada;
+        }
+
+        #endregion
+
+        public int InserirDA(NotasEntrada ntE)
+        {
+            StringBuilder query = new StringBuilder();
+            SqlParameter[] paramsToSP = new SqlParameter[3];
+
+            paramsToSP[0] = new SqlParameter("@numero", ntE.Numero);
+            paramsToSP[1] = new SqlParameter("@serie", ntE.Serie);
+            paramsToSP[2] = new SqlParameter("@data", ntE.Data);
+
+            query.Append(@" insert into notasentrada(numero, serie, data)");
+            query.Append(@" values(@numero, @serie, @data) SELECT SCOPE_IDENTITY()");
+
+            try
+            {
+                var id = SqlHelper.ExecuteScalar(ConfigurationManager.ConnectionStrings["conexao"].ToString(), CommandType.Text, query.ToString(), paramsToSP);
+
+                return Convert.ToInt32(id);
+            }
+            catch (Exception e)
+            {
+                return 0;
+            }
+        }
+
+        public bool EditarDA(NotasEntrada ntE)
+        {
+            StringBuilder query = new StringBuilder();
+            SqlParameter[] paramsToSP = new SqlParameter[4];
+
+            paramsToSP[0] = new SqlParameter("@id", ntE.Id);
+            paramsToSP[1] = new SqlParameter("@numero", ntE.Numero);
+            paramsToSP[2] = new SqlParameter("@serie", ntE.Serie);
+            paramsToSP[3] = new SqlParameter("@data", ntE.Data);
+
+            query.Append(@" update notasentrada set numero=@numero, serie=@serie, data=@data");
+            query.Append(@" where id=@id");
+
+            try
+            {
+                SqlHelper.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["conexao"].ToString(), CommandType.Text, query.ToString(), paramsToSP);
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
+        public bool ExcluirDA(NotasEntrada ntE)
+        {
+            try
+            {
+                SqlHelper.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["conexao"].ToString(), CommandType.Text,
+                                          string.Format("DELETE FROM notasentrada WHERE id = {0}", ntE.Id));    
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
+        public List<NotasEntrada> PesquisarDA()
+        {
+            SqlDataReader dr = SqlHelper.ExecuteReader(ConfigurationManager.ConnectionStrings["conexao"].ToString(),
+                                                                CommandType.Text, string.Format(@"SELECT * FROM NOTAENTRADA ORDER BY NUMERO "));
+
+            List<NotasEntrada> NotasEntrada = CarregarObjNotaEntrada(dr);
+            dr.Close();           
+            return NotasEntrada;
+
+        }
+
+        public List<NotasEntrada> PesquisarDA(string campo, string valor)
+        {
+            string consulta;
+
+            switch (campo.ToUpper())
+            {
+                case "NUMERO":
+                    consulta = string.Format("SELECT * FROM NOTAENTRADA WHERE NUMERO = {0}", utils.ComparaIntComZero(valor));
+                    break;
+                case "SERIE":
+                    consulta = string.Format("SELECT * FROM NOTAENTRADA WHERE SERIE  LIKE {0}'", utils.ComparaShortComZero(valor));
+                    break;
+                case "DATA":
+                    consulta = string.Format("SELECT * FROM NOTAENTRADA WHERE DATA  LIKE '{0}'", valor != null ? Convert.ToDateTime(valor).ToString("MM/dd/yyyy") : "");
+                    break;
+                default:
+                    consulta = "";
+                    break;
+            }
+
+            SqlDataReader dr = SqlHelper.ExecuteReader(ConfigurationManager.ConnectionStrings["conexao"].ToString(),
+                                                                CommandType.Text, consulta);
+
+            List<NotasEntrada> notaEnt = CarregarObjNotaEntrada(dr);
+            dr.Close();
+            return notaEnt;
+        }
+
+        public List<NotasEntrada> PesquisarBuscaDA(string valor)
+        {
+            StringBuilder consulta = new StringBuilder(@"SELECT * FROM NOTAENTRADA ");
+                      
+            if (valor != "" && valor != null)
+                consulta.Append(string.Format(" WHERE NUMERO = {0} OR  SERIE = {1} ", utils.ComparaIntComZero(valor), 
+                                                                                       utils.ComparaShortComZero(valor)));
+                                                                                                                
+
+            consulta.Append(" ORDER BY NUMERO ");
+
+            SqlDataReader dr = SqlHelper.ExecuteReader(ConfigurationManager.ConnectionStrings["conexao"].ToString(),
+                                                                CommandType.Text, consulta.ToString());
+
+            List<NotasEntrada> notaEntrada = CarregarObjNotaEntrada(dr);
+            dr.Close();
+            return notaEntrada;
+        }
+
+        public List<NotasEntrada> PesquisarDA(int id_ntE)
+        {
+            SqlDataReader dr = SqlHelper.ExecuteReader(ConfigurationManager.ConnectionStrings["conexao"].ToString(),
+                                                       CommandType.Text, string.Format(@"SELECT * " +
+                                                                                       " FROM NOTAENTRADA WHERE ID = {0}", id_ntE));
+
+            List<NotasEntrada> NotasEntrada = CarregarObjNotaEntrada(dr);
+            dr.Close();    
+            return NotasEntrada;
+        }
+
+        public bool CodigoJaUtilizadoDA(Int32 codigo)
+        {
+            DataSet dsInst = SqlHelper.ExecuteDataset(ConfigurationManager.ConnectionStrings["conexao"].ToString(),
+                                                       CommandType.Text, string.Format(@"SELECT 1 COD " +
+                                                                                        "  FROM NOTAENTRADA " +
+                                                                                        " WHERE NUMERO = {0} ", codigo));
+            int cod = 0;
+
+            if (dsInst.Tables[0].Rows.Count != 0)
+                cod = (int)dsInst.Tables[0].Rows[0]["COD"];
+
+            if (cod == 1)
+                return true;
+            else
+                return false;
+
+        }
+    }
+}

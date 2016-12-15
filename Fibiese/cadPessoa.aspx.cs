@@ -1,0 +1,460 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Data;
+using DataObjects;
+using BusinessLayer;
+using FG;
+using System.Text;
+
+
+namespace Admin
+{
+    public partial class cadPessoa : System.Web.UI.Page
+    {                               
+                       
+        #region variaveis
+        Utils utils = new Utils();
+        DataTable dtExcluidos = new DataTable();
+        DataTable dtFone = new DataTable();
+        string v_operacao = "";
+        #endregion
+
+        #region funcoes
+        private void CarregarDDLCategoria()
+        {
+            CategoriasBL catBL = new CategoriasBL();
+            List<Categorias> categorias = catBL.PesquisarBL();
+
+            ddlCategoria.Items.Add(new ListItem("Selecione", ""));
+            foreach (Categorias ltCat in categorias)
+                ddlCategoria.Items.Add(new ListItem(ltCat.Descricao, ltCat.Id.ToString()));
+
+            ddlCategoria.SelectedIndex = 0;
+        }
+        private void CarregarDdlUF(DropDownList ddl)
+        {
+            ddl.DataSource = System.Enum.GetNames(typeof(Estado));
+            ddl.DataBind(); 
+            ddl.SelectedIndex = 20;
+            
+        }
+        private void CarregarDdlCidade(DropDownList ddl, string uf)
+        {
+            CidadesBL cidBL = new CidadesBL();
+            List<Cidades> cidades = cidBL.PesquisaCidUfDA(uf);
+
+            ddl.Items.Clear();
+            ddl.Items.Add(new ListItem("Selecione", ""));
+            foreach (Cidades ltCid in cidades)
+                ddl.Items.Add(new ListItem(ltCid.Descricao, ltCid.Id.ToString()));
+
+            ddl.SelectedIndex = 0;
+        }
+        private void CarregarDdlBairro(DropDownList ddl, int? id_cid)
+        {
+            BairrosBL baiBL = new BairrosBL();
+            List<Bairros> bairros = baiBL.PesquisarCiSimplesdBL(id_cid);
+
+            ddl.Items.Clear();
+            ddl.Items.Add(new ListItem("Selecione", ""));
+            foreach (Bairros ltBai in bairros)
+                ddl.Items.Add(new ListItem(ltBai.Descricao, ltBai.Id.ToString()));
+
+            ddl.SelectedIndex = 0;
+        }
+        private void CarregarDadosPessoas(int id_pes)
+        {            
+            PessoasBL pesBL = new PessoasBL();
+            List<Pessoas> pessoas = pesBL.PesquisarBL(id_pes);
+
+            foreach (Pessoas pes in pessoas)
+            {
+                hfId.Value = pes.Id.ToString();
+                lblCodigo.Text = pes.Codigo.ToString();
+                txtNome.Text = pes.Nome;
+
+                if (pes.NomeFantasia.Trim() != "")
+                    txtNome.Text = pes.NomeFantasia;
+
+                txtCpfCnpj.Text = pes.CpfCnpj;                
+                txtRg.Text = pes.Rg;
+                txtDataNascimento.Text = pes.DtNascimento != null ? Convert.ToDateTime(pes.DtNascimento).ToString("dd/MM/yyyy") : "";
+                ddlEstadoCivil.SelectedValue = pes.EstadoCivil;              
+                txtCep.Text = pes.Cep;
+                txtEndereco.Text = pes.Endereco;
+                txtNumero.Text = pes.Numero;
+                txtComplemento.Text = pes.Complemento;                
+                txtObservacao.Text = pes.Obs;
+                txtDtCadastro.Text = pes.DtCadastro.ToString("dd/MM/yyyy");
+                ddlSexo.SelectedValue = pes.Sexo;
+                txtEmail.Text = pes.Email;
+                rbTipoAssoc.SelectedValue = pes.TipoAssociado.ToString();
+                txtTelefone.Text = pes.Telefone.ToString();
+                txtCelular.Text = pes.Celular.ToString();
+                ckEnviaEmail.Checked = pes.EnvEmail;
+
+                if (pes.Cidade != null)
+                {
+                    ddlUF.SelectedValue = pes.Cidade.UF;
+                    CarregarDdlCidade(ddlCidades, pes.Cidade.UF);
+                    CarregarDdlBairro(ddlBairro, pes.CidadeId);
+                    ddlCidades.SelectedValue = pes.CidadeId.ToString();
+                    ddlBairro.SelectedValue = pes.BairroId.ToString();
+                }
+
+                
+                ddlCategoria.SelectedValue = pes.CategoriaId.ToString();
+
+                if (pes.Tipo == "F")
+                {
+                    lblDesNome.Text = "* Nome";
+                }
+                else
+                {
+                    lblDesNome.Text = "* Nome Fantasia";
+                }
+
+                ConsisteCPFCNPJ();
+            }
+
+        }
+        private void CarregarTabelaPesquisaCidade()
+        {
+            Session["tabelaPesquisa"] = null;
+            DataTable dt = CriarDtPesquisa();
+
+            CidadesBL cidBL = new CidadesBL();
+            Cidades ci = new Cidades();
+            List<Cidades> cidades = cidBL.PesquisarBL();
+
+            foreach (Cidades cid in cidades)
+            {
+                DataRow linha = dt.NewRow();
+
+                linha["ID"] = cid.Id;
+                linha["CODIGO"] = cid.Codigo;
+                linha["DESCRICAO"] = cid.Descricao;
+
+                dt.Rows.Add(linha);
+            }
+
+            if (dt.Rows.Count > 0)
+                Session["tabelaPesquisa"] = dt;
+
+
+            Session["objBLPesquisa"] = cidBL;
+            Session["objPesquisa"] = ci;
+        }
+       
+        private string[] RetornarCodigoDecricaoCidade(int id_cid)
+        {
+            string[] v_cidade = new string[2];
+            CidadesBL cidBL = new CidadesBL();
+
+            DataSet dsCid = cidBL.PesquisarBL(id_cid);
+
+            if (dsCid.Tables[0].Rows.Count != 0)
+            {
+                v_cidade[0] = (string)dsCid.Tables[0].Rows[0]["codigo"].ToString();
+                v_cidade[1] = (string)dsCid.Tables[0].Rows[0]["descricao"];
+
+            }
+
+            return v_cidade;
+        }
+        private string[] RetornarCodigoDecricaoBairro(int id_bai)
+        {
+            string[] v_bairro = new string[2];
+            BairrosBL baiBL = new BairrosBL();
+            List<Bairros> bairros = baiBL.PesquisarBL(id_bai);
+
+            if (bairros.Count > 0)
+            {
+                v_bairro[0] = bairros[0].Codigo.ToString();
+                v_bairro[1] = bairros[0].Descricao;
+            }
+
+            return v_bairro;
+        }
+        private void CriaTabFone()
+        {
+            DataColumn[] keys = new DataColumn[1];
+
+            if (dtFone.Columns.Count == 0)
+            {
+                DataColumn coluna1 = new DataColumn("IDORDEM", Type.GetType("System.Int32"));
+                DataColumn coluna2 = new DataColumn("ID", Type.GetType("System.Int32"));
+                DataColumn coluna3 = new DataColumn("NUMERO", Type.GetType("System.String"));
+                DataColumn coluna4 = new DataColumn("DESCRICAO", Type.GetType("System.String"));
+
+                dtFone.Columns.Add(coluna1);
+                dtFone.Columns.Add(coluna2);
+                dtFone.Columns.Add(coluna3);
+                dtFone.Columns.Add(coluna4);
+
+                keys[0] = coluna1;
+
+                dtFone.PrimaryKey = keys;
+            }
+
+        }
+        private void CriaDtExcluidos()
+        {
+            if (dtExcluidos.Columns.Count == 0)
+            {
+                DataColumn coluna1 = new DataColumn("IDCODIGO", Type.GetType("System.String"));
+                DataColumn coluna2 = new DataColumn("TIPO", Type.GetType("System.String"));
+
+                dtExcluidos.Columns.Add(coluna1);
+                dtExcluidos.Columns.Add(coluna2);
+            }
+        }
+        private DataTable CriarDtPesquisa()
+        {
+            DataTable dt = new DataTable();
+            DataColumn coluna1 = new DataColumn("ID", Type.GetType("System.Int32"));
+            DataColumn coluna2 = new DataColumn("CODIGO", Type.GetType("System.String"));
+            DataColumn coluna3 = new DataColumn("DESCRICAO", Type.GetType("System.String"));
+
+            dt.Columns.Add(coluna1);
+            dt.Columns.Add(coluna2);
+            dt.Columns.Add(coluna3);
+
+            return dt;
+        }
+        private void CarregarAtributos()
+        {
+            txtDtCadastro.Attributes.Add("onkeypress", "return(formatar(this,'##/##/####',event))");
+            txtDataNascimento.Attributes.Add("onkeypress", "return(formatar(this,'##/##/####',event))");
+            txtNumero.Attributes.Add("onkeypress", "return(Inteiros(this,event))");            
+            txtTelefone.Attributes.Add("onkeypress", "mascara(this,'(00)0000-0000')");
+            txtCelular.Attributes.Add("onkeypress", "mascara(this,'(00)0000-0000')");
+            txtCep.Attributes.Add("onkeypress", "mascara(this,'00000-000')");           
+        }
+        
+       
+        private void ExibirMensagem(string mensagem)
+        {
+            ClientScript.RegisterStartupScript(System.Type.GetType("System.String"), "Alert",
+               "<script language='javascript'> { window.alert(\"" + mensagem + "\") }</script>");
+        }
+        private void LimparCampos()
+        {
+            hfId.Value = "";
+            hfIdTelefone.Value = "";
+            hfOrdemFone.Value = "";
+            txtCep.Text = "";           
+            txtComplemento.Text = "";      
+            txtCpfCnpj.Text = "";
+            txtDataNascimento.Text = "";
+            txtDtCadastro.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            txtEmail.Text = "";           
+            txtEndereco.Text = "";            
+            txtNome.Text = ""; 
+            txtNumero.Text = "";            
+            txtObservacao.Text = "";
+            txtTelefone.Text = "";
+            txtCelular.Text = "";
+            txtRg.Text = "";
+            dtExcluidos.Clear();
+            dtFone.Clear();
+            lblCodigo.Text = "Código gerado automaticamente.";
+            lblDesNome.Text = "";
+            ddlCategoria.SelectedIndex = 0;
+            ddlSexo.SelectedIndex = 0;
+            ddlEstadoCivil.SelectedIndex = 0;
+            ddlBairro.SelectedIndex = -1;
+            ddlCidades.SelectedIndex = -1;
+            ddlUF.SelectedIndex = 0;
+           
+            if (Request.QueryString["tipoPessoa"] != null)
+            {
+                if (Request.QueryString["tipoPessoa"].ToString() == "F")
+                {
+                    lblDesNome.Text = "* Nome";
+                }
+                else
+                {
+                    lblDesNome.Text = "* Nome Fantasia";
+                }
+
+            }
+        }
+        private void ConsisteCPFCNPJ()
+        {
+            lblCpfCnpjInvalido.Text = "";
+
+            if (utils.ValidaCPF(txtCpfCnpj.Text))
+               txtCpfCnpj.Text = utils.FormataCPF(txtCpfCnpj.Text);                
+            else
+            {
+                if (utils.ValidaCNPJ(txtCpfCnpj.Text))
+                    txtCpfCnpj.Text = utils.FormataCNPJ(txtCpfCnpj.Text);                    
+                else
+                {
+                    txtCpfCnpj.Text = "";
+                    lblCpfCnpjInvalido.Text = "*CPF/CNPJ inválido";
+                }
+            }
+        }
+        #endregion
+        protected void Page_Load(object sender, EventArgs e)
+        {           
+            int id_pes = 0;
+            CarregarAtributos();
+            this.CriaTabFone();
+            this.CriaDtExcluidos();
+
+            if (!IsPostBack)
+            {
+                if (Request.QueryString["operacao"] != null)
+                {
+                    v_operacao = Request.QueryString["operacao"];
+                    dtExcluidos.Clear();
+                    dtFone.Clear();
+                    Session["tbexcluidos"] = null;
+                    Session["tbfone"] = null;
+
+                    if (v_operacao == "edit")
+                    {
+                        if (Request.QueryString["id_pes"] != null)
+                            id_pes = Convert.ToInt32(Request.QueryString["id_pes"].ToString());
+                    }
+                    else
+                    {
+                        lblCodigo.Text = "Código gerado automaticamente.";
+                        if (Request.QueryString["tipoPessoa"] != null)
+                        {
+                            if (Request.QueryString["tipoPessoa"].ToString() == "F")
+                            {
+                                lblDesNome.Text = "* Nome";
+                            }
+                            else
+                            {
+                                lblDesNome.Text = "* Nome Fantasia";
+                            }
+
+                        }
+                    }
+                }
+
+
+                txtDtCadastro.Text = DateTime.Now.ToString("dd/MM/yyyy");
+
+                CarregarDDLCategoria();
+                CarregarDdlUF(ddlUF);
+                CarregarDdlCidade(ddlCidades, ddlUF.SelectedValue);
+               
+                if (v_operacao.ToLower() == "edit")                
+                    CarregarDadosPessoas(id_pes);                 
+                
+            }
+        }
+
+        protected void btnVoltar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("viewPessoa.aspx");
+        }
+
+        protected void btnSalvar_Click(object sender, EventArgs e)
+        {
+            PessoasBL pesBL = new PessoasBL();
+            Pessoas pessoas = new Pessoas();
+
+            pessoas.Id = utils.ComparaIntComZero(hfId.Value);
+            pessoas.Codigo = utils.ComparaIntComZero(lblCodigo.Text);
+            pessoas.Nome = txtNome.Text;
+            pessoas.NomeFantasia = "";
+            pessoas.CategoriaId = utils.ComparaIntComZero(ddlCategoria.SelectedValue);
+            pessoas.CpfCnpj = utils.LimpaFormatacaoCNPJCPF(txtCpfCnpj.Text);
+            pessoas.Rg = txtRg.Text;
+            pessoas.DtNascimento = utils.ComparaDataComNull(txtDataNascimento.Text);
+            pessoas.EstadoCivil = ddlEstadoCivil.SelectedValue;
+            pessoas.CidadeId = utils.ComparaIntComNull(ddlCidades.SelectedValue);
+            pessoas.Cep = txtCep.Text;
+            pessoas.Endereco = txtEndereco.Text;
+            pessoas.Numero = txtNumero.Text;
+            pessoas.BairroId = utils.ComparaIntComNull(ddlBairro.SelectedValue);
+            pessoas.Complemento = txtComplemento.Text;
+             pessoas.Obs = txtObservacao.Text;
+            DateTime dtCadastro;
+            DateTime.TryParse(txtDtCadastro.Text, out dtCadastro);
+            pessoas.DtCadastro = dtCadastro;
+            pessoas.Sexo = ddlSexo.SelectedValue != "S" ? ddlSexo.SelectedValue : "";
+            pessoas.Email = txtEmail.Text;
+            pessoas.TipoAssociado = rbTipoAssoc.SelectedValue;
+            pessoas.Celular = txtCelular.Text;
+            pessoas.Telefone = txtTelefone.Text;            
+            pessoas.EnvEmail = ckEnviaEmail.Checked;
+
+            if (lblDesNome.Text == "* Nome")
+                pessoas.Tipo = "F";
+            else
+                pessoas.Tipo = "J";
+
+            int idPes = 0;
+            string retorno;
+
+            
+            if (pessoas.Id > 0)
+            {
+                idPes = pessoas.Id;
+                retorno = pesBL.EditarBL(pessoas);
+                if (retorno == string.Empty || retorno == "True")
+                    lblMensagem.Text = "Pessoa atualizada com sucesso !";
+                else
+                    lblMensagem.Text = "Não foi possível atualizar a pessoa. Revise as informações.";
+            }
+            else
+            {
+                 
+                retorno = pesBL.InserirBL(pessoas);
+                idPes = utils.ComparaIntComZero(retorno);
+                if (idPes > 0)
+                {
+                    lblMensagem.Text = "Pessoa gravada com sucesso !";
+                    LimparCampos();
+                }
+                else
+                    lblMensagem.Text = "Não foi possível gravar a pessoa. Erro :" + retorno;
+
+            }
+
+            tcPessoa.ActiveTabIndex = 0;
+
+        }   
+
+        protected void ddlUF_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CarregarDdlCidade(ddlCidades, ddlUF.SelectedValue);
+            ddlBairro.Items.Clear();
+            ddlCidades.Focus();
+        }
+
+        protected void ddlCidades_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CarregarDdlBairro(ddlBairro, utils.ComparaIntComZero(ddlCidades.SelectedValue));
+            ddlBairro.Focus();
+        }
+
+        protected void dtgTelefones_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+                utils.CarregarEfeitoGrid("#c8defc", "#ffffff", e);
+
+            if (e.Row.RowType == DataControlRowType.DataRow)
+                utils.CarregarJsExclusao("Deseja excluir este registro?", 1, e);
+        }
+
+                       
+        protected void txtCpfCnpj_TextChanged(object sender, EventArgs e)
+        {
+            ConsisteCPFCNPJ();
+        }
+                
+    }
+}

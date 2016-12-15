@@ -1,0 +1,9 @@
+C:\Users\carina\Dropbox\FIBIESE\FIBIESA\FG\bin\Release\FG.dll
+C:\Users\carina\Dropbox\FIBIESE\FIBIESA\FG\bin\Release\FG.pdb
+C:\Users\carina\Dropbox\FIBIESE\FIBIESA\FG\obj\Release\FG.dll
+C:\Users\carina\Dropbox\FIBIESE\FIBIESA\FG\obj\Release\FG.pdb
+C:\Users\carina\OneDrive\Fibiese\FG\bin\Release\FG.dll
+C:\Users\carina\OneDrive\Fibiese\FG\bin\Release\FG.pdb
+C:\Users\carina\OneDrive\Fibiese\FG\obj\Release\FG.dll
+C:\Users\carina\OneDrive\Fibiese\FG\obj\Release\FG.pdb
+C:\Users\carina\OneDrive\Fibiese\FG\obj\Release\FG.csprojResolveAssemblyReference.cache

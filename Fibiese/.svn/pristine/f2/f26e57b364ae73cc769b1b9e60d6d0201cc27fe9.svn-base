@@ -1,0 +1,255 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using DataAccess;
+using DataObjects;
+using System.Data;
+using System.Data.SqlClient;
+using System.Configuration;
+using InfrastructureSqlServer.Helpers;
+using FG;
+
+namespace DataAccess
+{
+    public class UsuariosDA
+    {
+        Utils utils = new Utils();
+
+        #region funcoes
+        private List<Usuarios> CarregarObjUsuario(SqlDataReader dr)
+        {
+            List<Usuarios> usuarios = new List<Usuarios>();
+            
+            while (dr.Read())
+            {
+                Usuarios usu = new Usuarios();
+                Categorias cat = new Categorias();
+                Pessoas pes = new Pessoas();
+
+                usu.Id = int.Parse(dr["ID"].ToString());
+                usu.Login = dr["LOGIN"].ToString();
+                usu.Senha =null;
+                usu.Nome = dr["NOME"].ToString();
+                usu.Status = dr["STATUS"].ToString();  
+                usu.Tipo = dr["TIPO"].ToString();
+                usu.Email = dr["EMAIL"].ToString();               
+                usu.NrTentLogin = utils.ComparaIntComNull(dr["NRTENTLOGIN"].ToString());
+                usu.DhTentLogin = utils.ComparaDataComNull(dr["DHTENTLOGIN"].ToString());
+                usu.CategoriaId = utils.ComparaIntComZero(dr["CATEGORIAID"].ToString());
+
+                cat.Id = int.Parse(dr["CATEGORIAID"].ToString());
+                cat.Codigo = int.Parse(dr["CODCAT"].ToString());
+                cat.Descricao = dr["DESCAT"].ToString();
+
+                usu.Categoria = cat;
+                                               
+                usuarios.Add(usu);
+            }
+
+            return usuarios;        
+        }
+                
+        #endregion
+
+        public bool InserirDA(Usuarios usu)
+        {
+            SqlParameter[] paramsToSP = new SqlParameter[9];
+
+            paramsToSP[0] = new SqlParameter("@login", usu.Login);
+            paramsToSP[1] = new SqlParameter("@senha", utils.Criptografar(usu.Senha));
+            paramsToSP[2] = new SqlParameter("@nome", usu.Nome.ToUpper());
+            paramsToSP[3] = new SqlParameter("@status", usu.Status);
+            paramsToSP[4] = new SqlParameter("@tipo", usu.Tipo);
+            paramsToSP[5] = new SqlParameter("@email", usu.Email);
+            paramsToSP[6] = new SqlParameter("@nrtentlogin", usu.NrTentLogin);
+            paramsToSP[7] = new SqlParameter("@dhtentlogin", usu.DhTentLogin);
+            paramsToSP[8] = new SqlParameter("@categoriaid", usu.CategoriaId);
+
+            try
+            {
+                SqlHelper.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["conexao"].ToString(), CommandType.StoredProcedure, "stp_insert_usuarios", paramsToSP);
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
+        public bool EditarDA(Usuarios usu)
+        {
+            SqlParameter[] paramsToSP = new SqlParameter[10];
+
+            paramsToSP[0] = new SqlParameter("@id", usu.Id);
+            paramsToSP[1] = new SqlParameter("@login", usu.Login);
+            string senha = utils.Criptografar(usu.Senha);
+            if (senha == string.Empty)
+                senha = null;
+            paramsToSP[2] = new SqlParameter("@senha", senha);
+            paramsToSP[3] = new SqlParameter("@nome", usu.Nome.ToUpper());
+            paramsToSP[4] = new SqlParameter("@status", usu.Status);
+            paramsToSP[5] = new SqlParameter("@tipo", usu.Tipo);
+            paramsToSP[6] = new SqlParameter("@email", usu.Email);
+            paramsToSP[7] = new SqlParameter("@nrtentlogin", usu.NrTentLogin);
+            paramsToSP[8] = new SqlParameter("@dhtentlogin", usu.DhTentLogin);
+            paramsToSP[9] = new SqlParameter("@categoriaid", usu.CategoriaId);
+
+            try
+            {
+                SqlHelper.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["conexao"].ToString(), CommandType.StoredProcedure, "stp_update_usuarios", paramsToSP);
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+
+        }
+
+        public bool ExcluirDA(Usuarios usu)
+        {
+            SqlParameter[] paramsToSP = new SqlParameter[1];
+
+            paramsToSP[0] = new SqlParameter("@id", usu.Id);
+
+            try
+            {
+                SqlHelper.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["conexao"].ToString(), CommandType.StoredProcedure, "stp_delete_usuarios", paramsToSP);
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
+        public List<Usuarios> PesquisarDA()
+        {
+            StringBuilder consulta = new StringBuilder(); 
+            consulta.Append(@"SELECT U.*, C.CODIGO CODCAT, C.DESCRICAO DESCAT ");
+            consulta.Append(@"  FROM USUARIOS U ");
+            consulta.Append(@"  INNER JOIN CATEGORIAS C ON C.ID = U.CATEGORIAID ");
+                   
+            SqlDataReader dr = SqlHelper.ExecuteReader(ConfigurationManager.ConnectionStrings["conexao"].ToString(),
+                                                                CommandType.Text, consulta.ToString());
+
+            List<Usuarios> usuarios = CarregarObjUsuario(dr);
+
+            dr.Close();
+            return usuarios;
+        }
+
+        public List<Usuarios> PesquisarDA(string campo, string valor)
+        {
+            StringBuilder consulta = new StringBuilder();
+            consulta.Append(@"SELECT U.*, C.CODIGO CODCAT, C.DESCRICAO DESCAT ");
+            consulta.Append(@"  FROM USUARIOS U ");
+            consulta.Append(@"  INNER JOIN CATEGORIAS C ON C.ID = U.CATEGORIAID ");
+                   
+            switch (campo.ToUpper())
+            {
+                case "NOME":
+                    consulta.Append(@" WHERE P.NOME LIKE '%{0}%' ");
+                    break;             
+                default:
+                    consulta.Clear();
+                    break;
+            }
+
+            SqlDataReader dr = SqlHelper.ExecuteReader(ConfigurationManager.ConnectionStrings["conexao"].ToString(),
+                                                              CommandType.Text, string.Format(consulta.ToString(),valor));
+
+            List<Usuarios> usuarios = CarregarObjUsuario(dr);
+
+            dr.Close();
+            return usuarios;
+        }
+
+        public List<Usuarios> PesquisarDA(int id_usu)
+        {
+            StringBuilder consulta = new StringBuilder();
+            consulta.Append(@"SELECT U.*, C.CODIGO CODCAT, C.DESCRICAO DESCAT ");
+            consulta.Append(@"  FROM USUARIOS U ");
+            consulta.Append(@"  INNER JOIN CATEGORIAS C ON C.ID = U.CATEGORIAID ");
+            consulta.Append(@" WHERE U.ID = {0}");
+                     
+            
+            SqlDataReader dr = SqlHelper.ExecuteReader(ConfigurationManager.ConnectionStrings["conexao"].ToString(),
+                                                                CommandType.Text,string.Format(consulta.ToString(),id_usu));
+            
+            List<Usuarios> usuarios = CarregarObjUsuario(dr);
+
+            dr.Close();
+            return usuarios;
+        }
+
+        public List<Usuarios> PesquisarBuscaDA(string valor)
+        {
+            StringBuilder consulta = new StringBuilder();
+            consulta.Append(@"SELECT U.*, C.CODIGO CODCAT, C.DESCRICAO DESCAT ");
+            consulta.Append(@"  FROM USUARIOS U ");
+            consulta.Append(@"  INNER JOIN CATEGORIAS C ON C.ID = U.CATEGORIAID ");
+                  
+            if (valor != "" && valor != null)
+                consulta.Append(string.Format(" WHERE U.NOME  LIKE '%{0}%'", valor));
+
+            consulta.Append(" ORDER BY U.NOME ");
+
+            SqlDataReader dr = SqlHelper.ExecuteReader(ConfigurationManager.ConnectionStrings["conexao"].ToString(),
+                                                                CommandType.Text, consulta.ToString());
+
+            List<Usuarios> usuarios = CarregarObjUsuario(dr);
+
+            dr.Close();
+            return usuarios;
+        }
+
+        public List<Usuarios> PesquisarDA(string login, string senha, DateTime data)
+        {
+            StringBuilder consulta = new StringBuilder();
+            consulta.Append(@"SELECT U.*, C.CODIGO CODCAT, C.DESCRICAO DESCAT ");
+            consulta.Append(@"  FROM USUARIOS U ");
+            consulta.Append(@" INNER JOIN CATEGORIAS C ON C.ID = U.CATEGORIAID ");
+            consulta.Append(@" WHERE U.LOGIN = '{0}' ");
+            consulta.Append(@"   AND U.SENHA = '{1}' ");
+            consulta.Append(@"   AND U.STATUS = 'A' ");
+            
+            SqlDataReader dr = SqlHelper.ExecuteReader(ConfigurationManager.ConnectionStrings["conexao"].ToString(),
+                                                                CommandType.Text, string.Format(consulta.ToString(), login, utils.Criptografar(senha)));
+           
+            List<Usuarios> usuarios = CarregarObjUsuario(dr);
+
+            dr.Close();
+            return usuarios;
+        }
+
+        public DataSet PesquisarDAEmail(string email)
+        {
+            StringBuilder sqlQuery = new StringBuilder();
+            sqlQuery.Append(@"SELECT email, login, senha, nome ");
+            sqlQuery.Append(@" FROM usuarios  "); 
+            sqlQuery.Append(@" WHERE email = '{0}'");
+           
+            DataSet ds = SqlHelper.ExecuteDataset(ConfigurationManager.ConnectionStrings["conexao"].ToString(),
+                                                      CommandType.Text, string.Format(sqlQuery.ToString(),email));
+            return ds;
+        }
+
+        public bool ExisteUsuarios()
+        {
+            StringBuilder sqlQuery = new StringBuilder();
+            sqlQuery.Append(@"SELECT 1 ");
+            sqlQuery.Append(@" FROM usuarios  ");
+
+            DataSet ds = SqlHelper.ExecuteDataset(ConfigurationManager.ConnectionStrings["conexao"].ToString(),
+                                                      CommandType.Text, string.Format(sqlQuery.ToString()));
+            return ds.Tables[0].Rows.Count > 0;
+        }
+              
+        
+    }
+}

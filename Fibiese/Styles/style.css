@@ -1,0 +1,245 @@
+ul,li
+{
+  border:0;
+  font:inherit;
+  font-size:100%;
+  margin:0;
+  padding:0;
+}
+
+.clear
+{
+  clear:both;
+  height:0;
+  line-height:0
+}
+
+.navigation2
+{
+  float:left;
+  margin-left:0px;
+  margin-top:10px
+}
+
+.navigation2 li
+{
+  display:inline;
+  float:left;
+  margin-left:10px;
+  position:relative
+}
+
+.navigation2 li a
+{
+  color:#202020;
+  display:block;
+  font-size:16px;
+  height:33px;
+  line-height:31px;
+  padding:0 16px;
+  text-decoration:none
+}
+
+.navigation2 .sfHover a,.navigation2 li:hover a
+{
+  background:transparent url(../images/nav_hover.png) no-repeat scroll;
+  color:#fff;
+  float:left;
+  padding-right:11px
+}
+
+.navigation2 .sfHover .active_end,.navigation2 li:hover .active_end
+{
+  background:transparent url(../images/nav_hover.png) no-repeat scroll right top;  
+}
+
+.navigation2 li.active a
+{
+  background:transparent url(../images/nav_current.png) no-repeat scroll;
+  color:#fff;
+  float:left;
+  padding-right:11px;
+}
+
+.navigation2 .active_end
+{
+  clear:right;
+  display:none;
+  float:left;
+  height:33px;
+  width:5px;
+}
+
+.navigation2 .active .active_end
+{
+  background:transparent url(../images/nav_current.png) no-repeat scroll right top!important;
+}
+
+.navigation2 .sfHover .active_end,.navigation2 li:hover .active_end,.navigation2 .active .active_end
+{
+  display:block
+}
+
+.navigation2 li ul
+{
+  display:block;
+  left:0;
+  padding-top:40px;
+  position:absolute;
+  visibility:hidden;
+  z-index:9999
+}
+
+.navigation2 li:hover ul
+{
+  visibility:visible
+}
+
+.navigation2 li ul li
+{
+  background:url(../images/nav_sub.png) repeat-x scroll;
+  display:block;
+  float:none;
+  margin:0;
+  padding-left:10px;
+}
+
+.navigation2 li ul li:hover
+{
+  background-image:url(../images/nav_sub_active.png)
+}
+
+.navigation2 li ul li a
+{
+  background:none!important;
+  color:#FFF;
+  float:none!important;
+  font-size:12px;
+  height:30px;
+  
+  min-width:190px;
+  padding:0!important;
+  width:100%
+}
+
+body {
+}
+
+.grd_cmd_item, .grd_select, .grd_delete, .grd_edit, .grd_detalhe, .grd_excluitudo, .grd_ver, .grd_anexo
+{
+	width:16px;
+	text-align:center;
+}
+
+.grd_select a, .grd_edit a, .grd_delete a, .grd_ver a, .grd_anexo a
+{
+	float:left;
+	text-indent: -1500px;
+	width:16px;
+}
+
+.grd_select a
+{
+	background:url(../images/icons/icon_tick.png) no-repeat center center;
+}
+
+.grd_edit a
+{
+	background:url(../images/icons/icon_edit.png) no-repeat center center;
+}
+
+.grd_anexo a
+{
+	background:url(../images/ico_anexo.png) no-repeat center center;
+}
+
+.grd_delete a
+{
+	background:url(../images/icons/icon_cross.png) no-repeat center center;
+}
+
+.grd_detalhe a
+{
+	background:url(../images/localizar.gif) no-repeat center center;
+}
+
+.grd_excluitudo a
+{
+	background:url(../images/ico_status_error.gif) no-repeat center center;
+}
+
+.grd_ver
+{
+	background:url(../images/localizar.gif) no-repeat center center;
+}
+
+.grd_item_l
+{
+	text-align:left;
+	padding-left:4px;
+}
+
+.grd_item_r
+{
+	text-align:right;
+	padding-right:4px;
+}
+
+.grd_item_r_menor
+{
+	text-align:right;
+	padding-right:4px;
+	height:14px;		
+}
+
+
+.grd_item_c
+{
+	text-align:center;
+}
+
+.validacao{ color:#CC0000}
+
+.titulo {float: left;  color: #fff; font-weight: 700; font-size: 24px; position:relative; bottom: -15px; padding-left: 20px }   	
+
+.migalhapao {float: left; color: #fff; text-shadow: 1px 1px 1px #222{
+
+.labeldesc
+{
+	display:inline;		
+	font-style:normal;
+	font-weight:bold;
+	color:#6699FF;
+	width:200px;	
+	padding-left:3px;
+	margin-bottom:5px;	
+}
+
+.dropdownlist { padding: 9px; border: 1px solid #ccc; -moz-box-shadow: 1px 1px 2px #ccc; -moz-border-radius: 5px; min-width: 50px}
+.dropdownlist {font-family: Arial, Helvetica, sans-serif; color: #666; font-size: 13px;background: #fff url(../images/bg_input_normal.png) repeat-x top}
+
+.window{
+    display:none;
+    width:300px;
+    height:300px;
+    position:absolute;
+    left:0;
+    top:0;
+    background:#FFF;
+    z-index:9900;
+    padding:10px;
+    border-radius:10px;
+}
+ 
+#mascara{
+    display:none;
+    position:absolute;
+    left:0;
+    top:0;
+    z-index:9000;
+    background-color:#000;
+}
+ 
+.fechar{display:block; text-align:right;};
+    padding-right: 10px;;;;;;		
+	
